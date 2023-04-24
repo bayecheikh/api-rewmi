@@ -54,7 +54,7 @@ class DepartementController extends Controller
         if(!empty($array_communes)){
             foreach($array_communes as $commune){
                 $communeObj = Commune::where('id',$commune)->first();
-                $region->communes()->attach($communeObj);
+                $departement->communes()->attach($communeObj);
             }
         }
 

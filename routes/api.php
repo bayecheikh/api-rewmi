@@ -45,6 +45,7 @@ use App\Http\Controllers\Api\FinancementSourceController;
 use App\Http\Controllers\Api\BailleurController;
 use App\Http\Controllers\Api\SecteurController;
 use App\Http\Controllers\Api\SousSecteurController;
+use App\Http\Controllers\Api\ParrainageController;
 
 
 /*
@@ -184,6 +185,15 @@ Route::middleware('auth:api')->group(function () {
     Route::post('recherche_avance_investissements', [RechercheInvestissementController::class, 'recherche']);
     Route::post('export_csv_investissements', [ExportInvestissementController::class, 'exportCSV']);
     Route::post('export_pdf_investissements', [ExportInvestissementController::class, 'exportPDF']);
+
+    /**Recherche avancée parrainage */
+    Route::resource('parrainages', ParrainageController::class);
+    Route::post('recherche_avance_parrainages', [RechercheParrainageController::class, 'recherche']);
+    Route::post('export_csv_parrainages', [ExportParrainageController::class, 'exportCSV']);
+    Route::post('export_pdf_parrainages', [ExportParrainageController::class, 'exportPDF']);
+    Route::post('parrainageByNumCedeao', [RechercheParrainageController::class, 'parrainageByNumCedeao']);
+    Route::post('parrainageByNumElecteur', [RechercheParrainageController::class, 'parrainageByNumElecteur']);
+    Route::post('parrainageByNumCin', [RechercheParrainageController::class, 'parrainageByNumCin']);
 
     /**Gestion des lignes de financement */
     Route::resource('ligne_financements', LigneFinancementController::class);
