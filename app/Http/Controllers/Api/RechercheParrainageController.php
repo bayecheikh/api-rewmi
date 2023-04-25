@@ -56,7 +56,7 @@ class RechercheParrainageController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            $Parrainages = Parrainage::where('status', 'like', '%actif%')->get();
+            $Parrainages = Parrainage::all();
            
             if (!$request->user()->hasRole('super_admin')) {
                 $user_id = $request->user()->id;
