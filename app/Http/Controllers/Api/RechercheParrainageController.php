@@ -137,7 +137,7 @@ class RechercheParrainageController extends Controller
                 ->where('commune','like', '%'.$commune.'%');                  
             }
 
-            $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+            //$Parrainages = $Parrainages->orderBy('created_at', 'DESC');
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
         }
     }
