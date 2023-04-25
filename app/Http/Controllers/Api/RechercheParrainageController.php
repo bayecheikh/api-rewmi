@@ -66,75 +66,75 @@ class RechercheParrainageController extends Controller
 
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
+                ->where('numero_cedeao','LIKE', '%'.$numero_cedeao.'%');                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
-                ->where('prenom','like', '%'.$prenom.'%');                  
+                ->where('prenom','LIKE', '%'.$prenom.'%');                  
             }
             if($nom!=''){               
                 $Parrainages = $Parrainages
-                ->where('nom','like', '%'.$nom.'%');                  
+                ->where('nom','LIKE', '%'.$nom.'%');                  
             }
             if($date_naissance!=''){               
                 $Parrainages = $Parrainages
-                ->where('date_naissance','like', '%'.$date_naissance.'%');                  
+                ->where('date_naissance','LIKE', '%'.$date_naissance.'%');                  
             }
             if($lieu_naissance!=''){               
                 $Parrainages = $Parrainages
-                ->where('lieu_naissance','like', '%'.$lieu_naissance.'%');                  
+                ->where('lieu_naissance','LIKE', '%'.$lieu_naissance.'%');                  
             }
             if($taille!=''){               
                 $Parrainages = $Parrainages
-                ->where('taille','like', '%'.$taille.'%');                  
+                ->where('taille','LIKE', '%'.$taille.'%');                  
             }
             if($sexe!=''){               
                 $Parrainages = $Parrainages
-                ->where('sexe','like', '%'.$sexe.'%');                  
+                ->where('sexe','LIKE', '%'.$sexe.'%');                  
             }
             if($numero_electeur!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
+                ->where('numero_electeur','LIKE', '%'.$numero_electeur.'%');                  
             }
             if($centre_vote!=''){               
                 $Parrainages = $Parrainages
-                ->where('centre_vote','like', '%'.$centre_vote.'%');                  
+                ->where('centre_vote','LIKE', '%'.$centre_vote.'%');                  
             }
             if($bureau_vote!=''){               
                 $Parrainages = $Parrainages
-                ->where('bureau_vote','like', '%'.$bureau_vote.'%');                  
+                ->where('bureau_vote','LIKE', '%'.$bureau_vote.'%');                  
             }
             if($numero_cin!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
+                ->where('numero$numero_cin','LIKE', '%'.$numero_cin.'%');                  
             }
             if($telephone!=''){               
                 $Parrainages = $Parrainages
-                ->where('telephone','like', '%'.$telephone.'%');                  
+                ->where('telephone','LIKE', '%'.$telephone.'%');                  
             }
             if($prenom_responsable!=''){               
                 $Parrainages = $Parrainages
-                ->where('prenom$prenom_responsable','like', '%'.$prenom_responsable.'%');                  
+                ->where('prenom$prenom_responsable','LIKE', '%'.$prenom_responsable.'%');                  
             }
             if($nom_responsable!=''){               
                 $Parrainages = $Parrainages
-                ->where('nom$nom_responsable','like', '%'.$nom_responsable.'%');                  
+                ->where('nom$nom_responsable','LIKE', '%'.$nom_responsable.'%');                  
             }
             if($telephone_responsable!=''){               
                 $Parrainages = $Parrainages
-                ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
+                ->where('telephone_responsable','LIKE', '%'.$telephone_responsable.'%');                  
             }
             if($region!=''){               
                 $Parrainages = $Parrainages
-                ->where('region','like', '%'.$region.'%');                  
+                ->where('region','LIKE', '%'.$region.'%');                  
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
-                ->where('departement','like', '%'.$departement.'%');                  
+                ->where('departement','LIKE', '%'.$departement.'%');                  
             }
             if($commune!=''){               
                 $Parrainages = $Parrainages
-                ->where('commune','like', '%'.$commune.'%');                  
+                ->where('commune','LIKE', '%'.$commune.'%');                  
             }
 
             //$Parrainages = $Parrainages->orderBy('created_at', 'DESC');
@@ -155,11 +155,11 @@ class RechercheParrainageController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            $Parrainages = Parrainage::where('status', 'like', '%actif%');
+            $Parrainages = Parrainage::where('status', 'LIKE', '%actif%');
 
             if($numero_cedeao!=null){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
+                ->where('numero_cedeao','LIKE', '%'.$numero_cedeao.'%');                  
             }
             $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
@@ -179,11 +179,11 @@ class RechercheParrainageController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            $Parrainages = Parrainage::where('status', 'like', '%actif%');
+            $Parrainages = Parrainage::where('status', 'LIKE', '%actif%');
            
             if($numero_electeur!=null){               
                 $Parrainages = $Parrainages
-                ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
+                ->where('numero_electeur','LIKE', '%'.$numero_electeur.'%');                  
             }
 
             $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
@@ -204,11 +204,11 @@ class RechercheParrainageController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            $Parrainages = Parrainage::where('status', 'like', '%actif%');
+            $Parrainages = Parrainage::where('status', 'LIKE', '%actif%');
             
             if($numero_cin!=null){               
                 $Parrainages = $Parrainages
-                ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
+                ->where('numero$numero_cin','LIKE', '%'.$numero_cin.'%');                  
             }
 
             $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
