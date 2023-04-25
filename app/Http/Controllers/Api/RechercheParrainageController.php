@@ -56,12 +56,12 @@ class RechercheParrainageController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            $Parrainages = Parrainage::all();
-           
-            if (!$request->user()->hasRole('super_admin')) {
+            if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+                $Parrainages = Parrainage::all();
+            }
+            else{           
                 $user_id = $request->user()->id;
-                $Parrainages = $Parrainages
-                ->where('user_id', $user_id);
+                $Parrainages = Parrainage::where('user_id', $user_id);                      
             }
 
             if($numero_cedeao!=null){               
