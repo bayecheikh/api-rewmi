@@ -106,7 +106,7 @@ class RechercheParrainageController extends Controller
             }
             if($numero_cin!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero$numero_cin','LIKE', '%'.$numero_cin.'%');                  
+                ->where('numero_cin','LIKE', '%'.$numero_cin.'%');                  
             }
             if($telephone!=''){               
                 $Parrainages = $Parrainages
@@ -114,11 +114,11 @@ class RechercheParrainageController extends Controller
             }
             if($prenom_responsable!=''){               
                 $Parrainages = $Parrainages
-                ->where('prenom$prenom_responsable','LIKE', '%'.$prenom_responsable.'%');                  
+                ->where('prenom_responsable','LIKE', '%'.$prenom_responsable.'%');                  
             }
             if($nom_responsable!=''){               
                 $Parrainages = $Parrainages
-                ->where('nom$nom_responsable','LIKE', '%'.$nom_responsable.'%');                  
+                ->where('nom_responsable','LIKE', '%'.$nom_responsable.'%');                  
             }
             if($telephone_responsable!=''){               
                 $Parrainages = $Parrainages
@@ -138,7 +138,7 @@ class RechercheParrainageController extends Controller
             }
 
             //$Parrainages = $Parrainages->orderBy('created_at', 'DESC');
-            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
+            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"num_cedeao" =>$numero_cedeao]);
         }
     }
     public function parrainageByNumCedeao(Request $request)
