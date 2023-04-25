@@ -46,6 +46,8 @@ use App\Http\Controllers\Api\BailleurController;
 use App\Http\Controllers\Api\SecteurController;
 use App\Http\Controllers\Api\SousSecteurController;
 use App\Http\Controllers\Api\ParrainageController;
+use App\Http\Controllers\Api\RechercheParrainageController;
+use App\Http\Controllers\Api\ExportParrainageController;
 
 
 /*
