@@ -57,7 +57,7 @@ class RechercheParrainageController extends Controller
         }
         else{ 
             if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-                $Parrainages = Parrainage::where('status','like', '%'."actif".'%');
+                $Parrainages = Parrainage::all();
             }
             else{           
                 $user_id = $request->user()->id;
@@ -66,7 +66,7 @@ class RechercheParrainageController extends Controller
 
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
+                ->where('numero_cedeao','like', "%".$numero_cedeao."%")->get();                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
