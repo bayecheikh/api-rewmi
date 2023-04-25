@@ -64,75 +64,75 @@ class RechercheParrainageController extends Controller
                 ->where('user_id', $user_id);
             }
 
-            if($numero_cedeao!=''){               
+            if($numero_cedeao!=null){               
                 $Parrainages = $Parrainages
                 ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
-            if($prenom!=''){               
+            if($prenom!=null){               
                 $Parrainages = $Parrainages
                 ->where('prenom','like', '%'.$prenom.'%');                  
             }
-            if($nom!=''){               
+            if($nom!=null){               
                 $Parrainages = $Parrainages
                 ->where('nom','like', '%'.$nom.'%');                  
             }
-            if($date_naissance!=''){               
+            if($date_naissance!=null){               
                 $Parrainages = $Parrainages
                 ->where('date_naissance','like', '%'.$date_naissance.'%');                  
             }
-            if($lieu_naissance!=''){               
+            if($lieu_naissance!=null){               
                 $Parrainages = $Parrainages
                 ->where('lieu_naissance','like', '%'.$lieu_naissance.'%');                  
             }
-            if($taille!=''){               
+            if($taille!=null){               
                 $Parrainages = $Parrainages
                 ->where('taille','like', '%'.$taille.'%');                  
             }
-            if($sexe!=''){               
+            if($sexe!=null){               
                 $Parrainages = $Parrainages
                 ->where('sexe','like', '%'.$sexe.'%');                  
             }
-            if($numero_electeur!=''){               
+            if($numero_electeur!=null){               
                 $Parrainages = $Parrainages
                 ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
             }
-            if($centre_vote!=''){               
+            if($centre_vote!=null){               
                 $Parrainages = $Parrainages
                 ->where('centre_vote','like', '%'.$centre_vote.'%');                  
             }
-            if($bureau_vote!=''){               
+            if($bureau_vote!=null){               
                 $Parrainages = $Parrainages
                 ->where('bureau_vote','like', '%'.$bureau_vote.'%');                  
             }
-            if($numero_cin!=''){               
+            if($numero_cin!=null){               
                 $Parrainages = $Parrainages
                 ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
             }
-            if($telephone!=''){               
+            if($telephone!=null){               
                 $Parrainages = $Parrainages
                 ->where('telephone','like', '%'.$telephone.'%');                  
             }
-            if($prenom_responsable!=''){               
+            if($prenom_responsable!=null){               
                 $Parrainages = $Parrainages
                 ->where('prenom$prenom_responsable','like', '%'.$prenom_responsable.'%');                  
             }
-            if($nom_responsable!=''){               
+            if($nom_responsable!=null){               
                 $Parrainages = $Parrainages
                 ->where('nom$nom_responsable','like', '%'.$nom_responsable.'%');                  
             }
-            if($telephone_responsable!=''){               
+            if($telephone_responsable!=null){               
                 $Parrainages = $Parrainages
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
-            if($region!=''){               
+            if($region!=null){               
                 $Parrainages = $Parrainages
                 ->where('region','like', '%'.$region.'%');                  
             }
-            if($departement!=''){               
+            if($departement!=null){               
                 $Parrainages = $Parrainages
                 ->where('departement','like', '%'.$departement.'%');                  
             }
-            if($commune!=''){               
+            if($commune!=null){               
                 $Parrainages = $Parrainages
                 ->where('commune','like', '%'.$commune.'%');                  
             }
@@ -157,7 +157,7 @@ class RechercheParrainageController extends Controller
         else{ 
             $Parrainages = Parrainage::where('status', 'like', '%actif%');
 
-            if($numero_cedeao!=''){               
+            if($numero_cedeao!=null){               
                 $Parrainages = $Parrainages
                 ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
@@ -181,7 +181,7 @@ class RechercheParrainageController extends Controller
         else{ 
             $Parrainages = Parrainage::where('status', 'like', '%actif%');
            
-            if($numero_electeur!=''){               
+            if($numero_electeur!=null){               
                 $Parrainages = $Parrainages
                 ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
             }
@@ -206,7 +206,7 @@ class RechercheParrainageController extends Controller
         else{ 
             $Parrainages = Parrainage::where('status', 'like', '%actif%');
             
-            if($numero_cin!=''){               
+            if($numero_cin!=null){               
                 $Parrainages = $Parrainages
                 ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
             }
