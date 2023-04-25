@@ -64,75 +64,75 @@ class RechercheParrainageController extends Controller
                 $Parrainages = Parrainage::where('user_id', $user_id);                      
             }
 
-            if($numero_cedeao!=null){               
+            if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
                 ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
-            if($prenom!=null){               
+            if($prenom!=''){               
                 $Parrainages = $Parrainages
                 ->where('prenom','like', '%'.$prenom.'%');                  
             }
-            if($nom!=null){               
+            if($nom!=''){               
                 $Parrainages = $Parrainages
                 ->where('nom','like', '%'.$nom.'%');                  
             }
-            if($date_naissance!=null){               
+            if($date_naissance!=''){               
                 $Parrainages = $Parrainages
                 ->where('date_naissance','like', '%'.$date_naissance.'%');                  
             }
-            if($lieu_naissance!=null){               
+            if($lieu_naissance!=''){               
                 $Parrainages = $Parrainages
                 ->where('lieu_naissance','like', '%'.$lieu_naissance.'%');                  
             }
-            if($taille!=null){               
+            if($taille!=''){               
                 $Parrainages = $Parrainages
                 ->where('taille','like', '%'.$taille.'%');                  
             }
-            if($sexe!=null){               
+            if($sexe!=''){               
                 $Parrainages = $Parrainages
                 ->where('sexe','like', '%'.$sexe.'%');                  
             }
-            if($numero_electeur!=null){               
+            if($numero_electeur!=''){               
                 $Parrainages = $Parrainages
                 ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
             }
-            if($centre_vote!=null){               
+            if($centre_vote!=''){               
                 $Parrainages = $Parrainages
                 ->where('centre_vote','like', '%'.$centre_vote.'%');                  
             }
-            if($bureau_vote!=null){               
+            if($bureau_vote!=''){               
                 $Parrainages = $Parrainages
                 ->where('bureau_vote','like', '%'.$bureau_vote.'%');                  
             }
-            if($numero_cin!=null){               
+            if($numero_cin!=''){               
                 $Parrainages = $Parrainages
                 ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
             }
-            if($telephone!=null){               
+            if($telephone!=''){               
                 $Parrainages = $Parrainages
                 ->where('telephone','like', '%'.$telephone.'%');                  
             }
-            if($prenom_responsable!=null){               
+            if($prenom_responsable!=''){               
                 $Parrainages = $Parrainages
                 ->where('prenom$prenom_responsable','like', '%'.$prenom_responsable.'%');                  
             }
-            if($nom_responsable!=null){               
+            if($nom_responsable!=''){               
                 $Parrainages = $Parrainages
                 ->where('nom$nom_responsable','like', '%'.$nom_responsable.'%');                  
             }
-            if($telephone_responsable!=null){               
+            if($telephone_responsable!=''){               
                 $Parrainages = $Parrainages
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
-            if($region!=null){               
+            if($region!=''){               
                 $Parrainages = $Parrainages
                 ->where('region','like', '%'.$region.'%');                  
             }
-            if($departement!=null){               
+            if($departement!=''){               
                 $Parrainages = $Parrainages
                 ->where('departement','like', '%'.$departement.'%');                  
             }
-            if($commune!=null){               
+            if($commune!=''){               
                 $Parrainages = $Parrainages
                 ->where('commune','like', '%'.$commune.'%');                  
             }
