@@ -30,7 +30,7 @@ class RechercheParrainageController extends Controller
     {
         $input = $request->all();
 
-        $numero_cedeao = $input['numero_cedeao'];
+        $numero_cedeao = str_replace('"', '', $input['numero_cedeao']);
         $prenom = $input['prenom'];
         $nom = $input['nom'];
         $date_naissance = $input['date_naissance'];
@@ -66,7 +66,7 @@ class RechercheParrainageController extends Controller
 
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','LIKE', "'%{$numero_cedeao}'");                  
+                ->where('numero_cedeao','LIKE', "%{$numero_cedeao}");                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
