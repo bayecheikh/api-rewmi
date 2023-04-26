@@ -48,6 +48,7 @@ class RechercheParrainageController extends Controller
         $region = $input['region'];
         $departement = $input['departement'];
         $commune = $input['commune'];
+        $regionControle = array();
 
         $validator = Validator::make($input, []);
         if ($validator->fails())
