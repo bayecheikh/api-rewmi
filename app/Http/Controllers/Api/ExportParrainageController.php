@@ -140,7 +140,7 @@ class ExportParrainageController extends Controller
 
             $Parrainages = $Parrainages->get();
 
-           $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+           //$Parrainages = $Parrainages->orderBy('created_at', 'DESC');
 
             $fileName = 'Parrainages.csv';
         // these are the headers for the csv file. Not required but good to have one incase of system didn't recongize it properly
