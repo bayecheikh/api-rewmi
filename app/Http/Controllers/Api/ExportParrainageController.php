@@ -183,17 +183,17 @@ class ExportParrainageController extends Controller
 
             foreach ($Parrainages as $Parrainage) {   
                 
-                $row['numero_cedeao']  = $Parrainage->numero_cedeao;
+                $row['numero_cedeao']  = "'".$Parrainage->numero_cedeao;
                 $row['prenom']  = $Parrainage->prenom;
                 $row['nom']  = $Parrainage->nom;
                 $row['date_naissance']  = $Parrainage->date_naissance;
                 $row['lieu_naissance']  = $Parrainage->lieu_naissance;
                 $row['taille']  = $Parrainage->taille;
                 $row['sexe']  = $Parrainage->sexe;
-                $row['numero_electeur']  = $Parrainage->numero_electeur;
+                $row['numero_electeur']  = "'".$Parrainage->numero_electeur;
                 $row['centre_vote']  = $Parrainage->centre_vote;
                 $row['bureau_vote']  = $Parrainage->bureau_vote;
-                $row['numero_cin']  = $Parrainage->numero_cin;
+                $row['numero_cin']  = "'".$Parrainage->numero_cin;
                 $row['telephone']  = $Parrainage->telephone;
                 $row['region']  = $Parrainage->region;
                 $row['departement']  = $Parrainage->departement;
