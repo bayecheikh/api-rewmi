@@ -195,7 +195,8 @@ class ExportParrainageController extends Controller
                 $row['numero_electeur']  = $Parrainage->numero_electeur;
                 $row['centre_vote']  = $Parrainage->centre_vote;
                 $row['bureau_vote']  = $Parrainage->bureau_vote;
-                $row['numero_cin']  = $Parrainage->numero_cin;
+                $row['numero_cin1']  = substr($Parrainage->numero_cin, 0, 10);
+                $row['numero_cin2']  = substr($Parrainage->numero_cin, -3);
                 $row['telephone']  = $Parrainage->telephone;
                 $row['region']  = $Parrainage->region;
                 $row['departement']  = $Parrainage->departement;
