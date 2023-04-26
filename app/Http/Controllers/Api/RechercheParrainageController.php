@@ -69,7 +69,7 @@ class RechercheParrainageController extends Controller
             } */
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('region','like', $request->region);                 
+                ->where('region','like', 'Dakar');                 
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
