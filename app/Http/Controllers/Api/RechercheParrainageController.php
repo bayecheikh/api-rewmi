@@ -63,13 +63,10 @@ class RechercheParrainageController extends Controller
                 $user_id = $request->user()->id;
                 $Parrainages = Parrainage::where('user_id', $user_id);                      
             }
-            /* if($region!=''){               
-                $Parrainages = $Parrainages
-                ->where('region','like', $request->region);                  
-            } */
+
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('region','Dakar');                 
+                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
@@ -127,7 +124,13 @@ class RechercheParrainageController extends Controller
                 $Parrainages = $Parrainages
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
-            
+            if($region!=''){               
+                $Parrainages = $Parrainages
+                ->whereHas('region', function($q) use ($region){
+                    $q->where('region', $region);
+                });
+                                 
+            }
             if($departement!=''){               
                 $Parrainages = $Parrainages
                 ->where('departement','like', '%'.$departement.'%');                  
@@ -138,6 +141,7 @@ class RechercheParrainageController extends Controller
             }
 
             $Parrainages = $Parrainages->get();
+
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$region]);
         }
     }
