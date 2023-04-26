@@ -30,7 +30,7 @@ class RechercheParrainageController extends Controller
     {
         $input = $request->all();
 
-        $numero_cedeao = trim($input['numero_cedeao'], '"');
+        $numero_cedeao = $input['numero_cedeao'];
         $prenom = $input['prenom'];
         $nom = $input['nom'];
         $date_naissance = $input['date_naissance'];
@@ -57,7 +57,7 @@ class RechercheParrainageController extends Controller
         }
         else{ 
             if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-                $Parrainages = Parrainage::all();
+                $Parrainages = Parrainage::where('status','like', '%actif%');
             }
             else{           
                 $user_id = $request->user()->id;
@@ -66,7 +66,7 @@ class RechercheParrainageController extends Controller
 
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','=', "%'.$numero_cedeao.'%");                  
+                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
@@ -137,7 +137,7 @@ class RechercheParrainageController extends Controller
                 ->where('commune','like', '%'.$commune.'%');                  
             }
 
-            //$Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+            $Parrainages = $Parrainages->get();
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"num_cedeao" =>$numero_cedeao]);
         }
     }
