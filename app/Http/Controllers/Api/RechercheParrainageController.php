@@ -138,7 +138,7 @@ class RechercheParrainageController extends Controller
             }
 
             $Parrainages = $Parrainages->get();
-            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"num_cedeao" =>$numero_cedeao]);
+            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$region]);
         }
     }
     public function parrainageByNumCedeao(Request $request)
