@@ -49,7 +49,7 @@ class ExportParrainageController extends Controller
         $departement = $input['departement'];
         $commune = $input['commune'];
 
-        $validator = Validator::make($input, ['annee' => '','monnaie' => '','region' => '','dimension' => '','pilier' => '','axe' => '','source' => '','type_source' => '','structure' => '','departement' => '']);
+        $validator = Validator::make($input, []);
         if ($validator->fails())
         {
             return response()
@@ -138,9 +138,9 @@ class ExportParrainageController extends Controller
                 ->where('commune','like', '%'.$commune.'%');                  
             }
 
-            //$Parrainages = $Parrainages->get();
+            $Parrainages = $Parrainages->get();
 
-            $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+           $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
 
             $fileName = 'Parrainages.csv';
         // these are the headers for the csv file. Not required but good to have one incase of system didn't recongize it properly
