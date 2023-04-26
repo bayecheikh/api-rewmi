@@ -63,13 +63,13 @@ class RechercheParrainageController extends Controller
                 $user_id = $request->user()->id;
                 $Parrainages = Parrainage::where('user_id', $user_id);                      
             }
-            if($region!=''){               
+            /* if($region!=''){               
                 $Parrainages = $Parrainages
                 ->where('region','like', $request->region);                  
-            }
+            } */
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
+                ->where('region','like', $request->region);                 
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
