@@ -128,7 +128,7 @@ class RechercheParrainageController extends Controller
             if($region!=''){ 
                 $regionControle = $Parrainages->get();              
                 $Parrainages = $Parrainages
-                ->where('region',$region);                  
+                ->where('region','like','%'.$region.'%')->get();                  
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
