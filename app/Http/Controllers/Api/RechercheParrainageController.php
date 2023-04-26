@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Validator;
-use DB;
+
 use App\Models\Role;
 use App\Models\Permission;
 
@@ -48,7 +48,6 @@ class RechercheParrainageController extends Controller
         $region = $input['region'];
         $departement = $input['departement'];
         $commune = $input['commune'];
-        $regionControle = array();
 
         $validator = Validator::make($input, []);
         if ($validator->fails())
@@ -58,11 +57,11 @@ class RechercheParrainageController extends Controller
         }
         else{ 
             if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-                $Parrainages = DB::table('parrainages')->where('status','like', '%actif%');
+                $Parrainages = Parrainage::where('status','like', '%actif%');
             }
             else{           
                 $user_id = $request->user()->id;
-                $Parrainages = DB::table('parrainages')->where('user_id', $user_id);                      
+                $Parrainages = Parrainage::where('user_id', $user_id);                      
             }
 
             if($numero_cedeao!=''){               
@@ -125,10 +124,9 @@ class RechercheParrainageController extends Controller
                 $Parrainages = $Parrainages
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
-            if($region!=''){ 
-                $regionControle = $Parrainages->get();              
-                $Parrainages
-                ->andWhere('region','like','%'.$region.'%');                  
+            if($region!=''){               
+                $Parrainages = $Parrainages
+                ->where('region','like', "%{$region}%");                  
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
@@ -140,7 +138,7 @@ class RechercheParrainageController extends Controller
             }
 
             $Parrainages = $Parrainages->get();
-            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$regionControle]);
+            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$region]);
         }
     }
     public function parrainageByNumCedeao(Request $request)
