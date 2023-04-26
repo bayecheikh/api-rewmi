@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Validator;
-
+use DB;
 use App\Models\Role;
 use App\Models\Permission;
 
@@ -57,11 +57,11 @@ class RechercheParrainageController extends Controller
         }
         else{ 
             if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-                $Parrainages = Parrainage::where('status','like', '%actif%');
+                $Parrainages = DB::table('parrainages')->where('status','like', '%actif%');
             }
             else{           
                 $user_id = $request->user()->id;
-                $Parrainages = Parrainage::where('user_id', $user_id);                      
+                $Parrainages = DB::table('parrainages')->where('user_id', $user_id);                      
             }
 
             if($numero_cedeao!=''){               
@@ -125,10 +125,8 @@ class RechercheParrainageController extends Controller
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
             if($region!=''){               
-                $Parrainages = $Parrainages->where(
-                    function($query) use ($region) {
-                    return $query->where('region','like', '%'.$region.'%');
-                });                              
+                $Parrainages = $Parrainages
+                ->where('region','like', '%'.$region.'%');                  
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
