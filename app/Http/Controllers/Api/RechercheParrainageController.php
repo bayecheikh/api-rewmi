@@ -30,7 +30,7 @@ class RechercheParrainageController extends Controller
     {
         $input = $request->all();
 
-        $numero_cedeao = $input['numero_cedeao'];
+        $numero_cedeao = trim($input['numero_cedeao'], '"');
         $prenom = $input['prenom'];
         $nom = $input['nom'];
         $date_naissance = $input['date_naissance'];
