@@ -125,8 +125,10 @@ class RechercheParrainageController extends Controller
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
             if($region!=''){               
-                $Parrainages = $Parrainages
-                ->where('region','like', "%Dakar%");                  
+                $Parrainages = $Parrainages->where(
+                    function($query) use ($region) {
+                    return $query->where('region','like', '%'.$region.'%');
+                });                              
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
