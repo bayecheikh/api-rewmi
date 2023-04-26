@@ -125,7 +125,7 @@ class RechercheParrainageController extends Controller
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
             if($region!=''){ 
-                $region = $Parrainages->get();              
+                $regionControle = $Parrainages->get();              
                 $Parrainages = $Parrainages
                 ->where('region',$region);                  
             }
@@ -139,7 +139,7 @@ class RechercheParrainageController extends Controller
             }
 
             $Parrainages = $Parrainages->get();
-            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$region]);
+            return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$regionControle]);
         }
     }
     public function parrainageByNumCedeao(Request $request)
