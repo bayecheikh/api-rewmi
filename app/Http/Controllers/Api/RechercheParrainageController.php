@@ -125,7 +125,7 @@ class RechercheParrainageController extends Controller
             }
             if(!empty($region)){               
                 $Parrainages = $Parrainages
-                ->where('region',$request->region);
+                ->where('region',$request->region)->get();
                                  
             }
             if($departement!=''){               
@@ -137,7 +137,7 @@ class RechercheParrainageController extends Controller
                 ->where('commune',$commune);                  
             }
 
-            $Parrainages = $Parrainages->get();
+            //$Parrainages = $Parrainages->get();
 
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$region]);
         }
