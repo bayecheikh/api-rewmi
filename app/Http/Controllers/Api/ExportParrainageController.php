@@ -131,11 +131,11 @@ class ExportParrainageController extends Controller
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
-                ->where('departement','like', '%'.$departement.'%');                  
+                ->where('departement','LIKE', '%'.$departement.'%');                  
             }
             if($commune!=''){               
                 $Parrainages = $Parrainages
-                ->where('commune','like', '%'.$commune.'%');                  
+                ->where('commune','LIKE', '%'.$commune.'%');                  
             }
 
             $Parrainages = $Parrainages->get();
