@@ -61,11 +61,11 @@ class RechercheParrainageController extends Controller
             }
             else{           
                 $user_id = $request->user()->id;
-                $Parrainages = Parrainage::where('user_id', $user_id)->where('status','actif');                      
+                $Parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
             }
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao',$numero_cedeao);                  
+                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
@@ -123,21 +123,21 @@ class RechercheParrainageController extends Controller
                 $Parrainages = $Parrainages
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
-            if(!empty($region)){               
+            if($region!=''){               
                 $Parrainages = $Parrainages
-                ->where('nom','Gueye')->get();
+                ->where('region','like', '%'.$region.'%');
                                  
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
-                ->where('departement',$departement);                  
+                ->where('departement','like', '%'.$departement.'%');                  
             }
             if($commune!=''){               
                 $Parrainages = $Parrainages
-                ->where('commune',$commune);                  
+                ->where('commune','like', '%'.$commune.'%');                  
             }
 
-            //$Parrainages = $Parrainages->get();
+            $Parrainages = $Parrainages->get();
 
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages,"REGION" =>$region]);
         }
