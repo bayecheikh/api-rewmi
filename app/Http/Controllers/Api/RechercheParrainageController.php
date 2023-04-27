@@ -68,6 +68,11 @@ class RechercheParrainageController extends Controller
                     $query->where('region','like', '%'.$region.'%');
                 });                                            
             }
+            if($numero_cedeao!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($numero_cedeao){
+                    $query->where('numero_cedeao','like', '%'.$numero_cedeao.'%');
+                });                               
+            }
             
 
             $Parrainages = $Parrainages->get();
