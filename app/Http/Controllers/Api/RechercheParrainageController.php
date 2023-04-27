@@ -68,23 +68,83 @@ class RechercheParrainageController extends Controller
                     $query->where('numero_cedeao','like', '%'.$numero_cedeao.'%');
                 });                               
             }
-          
+            if($prenom!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($prenom){
+                    $query->where('prenom','like', '%'.$prenom.'%');
+                });                              
+            }
+            if($nom!=''){ 
+                $Parrainages = $Parrainages->where(function($query) use ($nom){
+                    $query->where('nom','like', '%'.$nom.'%');
+                });                               
+            }
+            if($date_naissance!=''){   
+                $Parrainages = $Parrainages->where(function($query) use ($date_naissance){
+                    $query->where('date_naissance','like', '%'.$date_naissance.'%');
+                });                              
+            }
+            if($lieu_naissance!=''){   
+                $Parrainages = $Parrainages->where(function($query) use ($lieu_naissance){
+                    $query->where('lieu_naissance','like', '%'.$lieu_naissance.'%');
+                });                 
+            }
+            if($taille!=''){ 
+                $Parrainages = $Parrainages->where(function($query) use ($taille){
+                    $query->where('taille','like', '%'.$taille.'%');
+                });                  
+            }
+            if($sexe!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($sexe){
+                    $query->where('sexe','like', '%'.$sexe.'%');
+                });                 
+            }
+            if($numero_electeur!=''){    
+                $Parrainages = $Parrainages->where(function($query) use ($numero_electeur){
+                    $query->where('numero_electeur','like', '%'.$numero_electeur.'%');
+                });                  
+            }
+            if($centre_vote!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($centre_vote){
+                    $query->where('centre_vote','like', '%'.$centre_vote.'%');
+                });                  
+            }
+            if($bureau_vote!=''){    
+                $Parrainages = $Parrainages->where(function($query) use ($bureau_vote){
+                    $query->where('bureau_vote','like', '%'.$bureau_vote.'%');
+                });                
+            }
+            if($numero_cin!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($numero_cin){
+                    $query->where('numero_cin','like', '%'.$numero_cin.'%');
+                });                 
+            }
+            if($telephone!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($telephone){
+                    $query->where('telephone','like', '%'.$telephone.'%');
+                });                 
+            }
+            if($prenom_responsable!=''){ 
+                $Parrainages = $Parrainages->where(function($query) use ($prenom_responsable){
+                    $query->where('prenom_responsable','like', '%'.$prenom_responsable.'%');
+                });                 
+            }
+            if($nom_responsable!=''){    
+                $Parrainages = $Parrainages->where(function($query) use ($nom_responsable){
+                    $query->where('nom_responsable','like', '%'.$nom_responsable.'%');
+                });                  
+            }
+            if($telephone_responsable!=''){  
+                $Parrainages = $Parrainages->where(function($query) use ($telephone_responsable){
+                    $query->where('telephone_responsable','like', '%'.$telephone_responsable.'%');
+                });                
+            }
             if($region!=''){               
                 $Parrainages = $Parrainages->where(function($query) use ($region){
                     $query->where('region','like', '%'.$region.'%');
                 });                                            
             }
             
-            if($departement!=''){  
-                $Parrainages = $Parrainages->where(function($query) use ($departement){
-                    $query->where('departement','like', '%'.$departement.'%');
-                });                
-            }
-            if($commune!=''){      
-                $Parrainages = $Parrainages->where(function($query) use ($commune){
-                    $query->where('commune','like', '%'.$commune.'%');
-                });                 
-            }
+            
 
             $Parrainages = $Parrainages->get();
 
