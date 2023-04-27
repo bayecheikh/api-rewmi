@@ -57,16 +57,15 @@ class RechercheParrainageController extends Controller
         }
         else{ 
             if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-                $Parrainages = Parrainage::where('status','like', '%actif%');
+                $Parrainages = Parrainage::where('status','actif');
             }
             else{           
                 $user_id = $request->user()->id;
-                $Parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+                $Parrainages = Parrainage::where('user_id', $user_id)->where('status','actif');                      
             }
-
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
-                ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
+                ->where('numero_cedeao',$numero_cedeao);                  
             }
             if($prenom!=''){               
                 $Parrainages = $Parrainages
@@ -126,16 +125,16 @@ class RechercheParrainageController extends Controller
             }
             if($region!=''){               
                 $Parrainages = $Parrainages
-                ->where('region','LIKE', "%{$region}%");
+                ->where('region',(String)$region);
                                  
             }
             if($departement!=''){               
                 $Parrainages = $Parrainages
-                ->where('departement','like', '%'.$departement.'%');                  
+                ->where('departement',$departement);                  
             }
             if($commune!=''){               
                 $Parrainages = $Parrainages
-                ->where('commune','like', '%'.$commune.'%');                  
+                ->where('commune',$commune);                  
             }
 
             $Parrainages = $Parrainages->get();
