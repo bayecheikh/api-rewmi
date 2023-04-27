@@ -45,7 +45,7 @@ class RechercheParrainageController extends Controller
         $prenom_responsable = $input['prenom_responsable'];
         $nom_responsable = $input['nom_responsable'];
         $telephone_responsable = $input['telephone_responsable'];
-        $region = 'Dakar';
+        $region = $input['region'];
         $departement = $input['departement'];
         $commune = $input['commune'];
 
@@ -123,9 +123,9 @@ class RechercheParrainageController extends Controller
                 $Parrainages = $Parrainages
                 ->where('telephone_responsable','like', '%'.$telephone_responsable.'%');                  
             }
-            if($region!=''){               
+            if(!empty($region)){               
                 $Parrainages = $Parrainages
-                ->where('region', "'{$region}'");
+                ->where('region',$request->region);
                                  
             }
             if($departement!=''){               
