@@ -144,7 +144,16 @@ class RechercheParrainageController extends Controller
                 });                                            
             }
             
-            
+            if($departement!='' && $departement!=null){  
+                $Parrainages = $Parrainages->where(function($query) use ($departement){
+                    $query->where('departement','like', '%'.$departement.'%');
+                });                
+            }
+            if($commune!='' && $commune!=null){      
+                $Parrainages = $Parrainages->where(function($query) use ($commune){
+                    $query->where('commune','like', '%'.$commune.'%');
+                });                 
+            }
 
             $Parrainages = $Parrainages->get();
 
