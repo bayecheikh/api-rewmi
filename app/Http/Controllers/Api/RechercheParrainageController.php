@@ -45,7 +45,7 @@ class RechercheParrainageController extends Controller
         $prenom_responsable = $input['prenom_responsable'];
         $nom_responsable = $input['nom_responsable'];
         $telephone_responsable = $input['telephone_responsable'];
-        $region = $input['region'];
+        $region = 'Dakar';
         $departement = $input['departement'];
         $commune = $input['commune'];
 
