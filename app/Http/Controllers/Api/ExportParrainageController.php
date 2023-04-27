@@ -126,7 +126,7 @@ class ExportParrainageController extends Controller
             }
             if($region!=''){               
                 $Parrainages = $Parrainages
-                ->where('region','LIKE', "%{$region}%");
+                ->where('region','LIKE','%'.$region.'%');
                                  
             }
             if($departement!=''){               
