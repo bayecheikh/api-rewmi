@@ -209,7 +209,7 @@ class RechercheParrainageController extends Controller
             
             if($numero_cin!=null){               
                 $Parrainages = $Parrainages
-                ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
+                ->where('numero_cin','like', '%'.$numero_cin.'%');                  
             }
 
             $Parrainages = $Parrainages->get();
