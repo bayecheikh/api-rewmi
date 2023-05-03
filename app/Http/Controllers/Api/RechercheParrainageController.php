@@ -158,11 +158,11 @@ class RechercheParrainageController extends Controller
         else{ 
             $Parrainages = Parrainage::where('status', 'like', '%actif%');
 
-            if($numero_cedeao!=null){               
+            if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
                 ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
             }
-            $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+            $Parrainages = $Parrainages->get();
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
         }
     }
@@ -182,12 +182,12 @@ class RechercheParrainageController extends Controller
         else{ 
             $Parrainages = Parrainage::where('status', 'like', '%actif%');
            
-            if($numero_electeur!=null){               
+            if($numero_electeur!=''){               
                 $Parrainages = $Parrainages
                 ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
             }
 
-            $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+            $Parrainages = $Parrainages->get();
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
         }
     }
@@ -212,7 +212,7 @@ class RechercheParrainageController extends Controller
                 ->where('numero$numero_cin','like', '%'.$numero_cin.'%');                  
             }
 
-            $Parrainages = $Parrainages->orderBy('created_at', 'DESC');
+            $Parrainages = $Parrainages->get();
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
         }
     }
