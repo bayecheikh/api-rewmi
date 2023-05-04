@@ -157,6 +157,8 @@ class ExportParrainageController extends Controller
 
         $columns = array(
             'numero_cedeao',
+            /* 'numero_cedeao1',
+            'numero_cedeao2', */
             'prenom',
             'nom',
             'date_naissance',
@@ -185,7 +187,8 @@ class ExportParrainageController extends Controller
             foreach ($Parrainages as $Parrainage) {   
                 
                 $row['numero_cedeao']  = "'".$Parrainage->numero_cedeao;
-                //$row['numero_cedeao2']  = substr($Parrainage->numero_cedeao, -7);
+                /* $row['numero_cedeao1']  = substr($Parrainage->numero_cedeao, 0, 10);
+                $row['numero_cedeao2']  = substr($Parrainage->numero_cedeao, -7); */
                 $row['prenom']  = $Parrainage->prenom;
                 $row['nom']  = $Parrainage->nom;
                 $row['date_naissance']  = $Parrainage->date_naissance;
@@ -207,6 +210,8 @@ class ExportParrainageController extends Controller
 
                 fputcsv($file, array( 
                     $row['numero_cedeao'],
+                    /* $row['numero_cedeao1'],
+                    $row['numero_cedeao2'], */
                     $row['prenom'],
                     $row['nom'],
                     $row['date_naissance'],
