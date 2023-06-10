@@ -101,10 +101,17 @@ class SmsAnnuaireController extends Controller
      
                 $client = new Client($accountSid, $authToken);
      
-                $client->messages->create("+221778688784", [
-                    'from' => $twilioNumber,
-                    'body' => $request->message
-                ]);
+                foreach($Annuaires as $an){
+                    if($an->telephone!=null && $an->telephone!=''){
+                        $numero = '+221'.$an->telephone;
+                        $client->messages->create($numero, [
+                            'from' => $twilioNumber,
+                            'body' => $request->message
+                        ]);
+                    }
+                    
+                }
+                
      
                 return response()->json(["success" => true, "message" => "Liste des Annuaires", "data" =>$Annuaires]);
      
