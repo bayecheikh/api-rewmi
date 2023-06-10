@@ -207,6 +207,9 @@ Route::middleware('auth:api')->group(function () {
     Route::post('annuaireByNumElecteur', [RechercheAnnuaireController::class, 'annuaireByNumElecteur']);
     Route::post('annuaireByNumCin', [RechercheAnnuaireController::class, 'annuaireByNumCin']);
 
+    /**Gestion des types militants */
+    Route::resource('type_militants', TypeMilitantController::class);
+
     /**Gestion des lignes de financement */
     Route::resource('ligne_financements', LigneFinancementController::class);
 
