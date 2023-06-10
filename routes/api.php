@@ -48,6 +48,10 @@ use App\Http\Controllers\Api\SousSecteurController;
 use App\Http\Controllers\Api\ParrainageController;
 use App\Http\Controllers\Api\RechercheParrainageController;
 use App\Http\Controllers\Api\ExportParrainageController;
+use App\Http\Controllers\Api\AnnuaireController;
+use App\Http\Controllers\Api\RechercheAnnuaireController;
+use App\Http\Controllers\Api\ExportAnnuaireController;
+use App\Http\Controllers\Api\SmsAnnuaireController;
 
 
 /*
