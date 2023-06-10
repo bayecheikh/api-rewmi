@@ -17,6 +17,7 @@ use App\Models\Permission;
 
 use App\Models\Annuaire;
 use App\Models\User;
+use Twilio\Rest\Client;
 
 class SmsAnnuaireController extends Controller
 {
@@ -85,6 +86,34 @@ class SmsAnnuaireController extends Controller
             }
 
             $Annuaires = $Annuaires->get();
+
+            //send sms
+
+            /* $this->validate($request, [
+                'receiver' => 'required|max:15',
+                'message' => 'required|min:5|max:155',
+            ]); */
+     
+            try {
+                $accountSid = getenv("TWILIO_SID");
+                $authToken = getenv("TWILIO_TOKEN");
+                $twilioNumber = getenv("TWILIO_FROM");
+     
+                $client = new Client($accountSid, $authToken);
+     
+                $client->messages->create("+221778688784", [
+                    'from' => $twilioNumber,
+                    'body' => $request->message
+                ]);
+     
+                return back()
+                ->with('success','Sms has been successfully sent.');
+     
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+                return back()
+                ->with('error', $e->getMessage());
+            }
 
             return response()->json(["success" => true, "message" => "Liste des Annuaires", "data" =>$Annuaires]);
         }
