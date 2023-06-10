@@ -51,7 +51,7 @@ class AnnuaireController extends Controller
 
         $user_id = $request->user()->id;
 
-        $validator = Validator::make($input, ['telephone' => 'required']);
+        $validator = Validator::make($input, ['telephone' => 'required|unique:annuaires']);
 
         if ($validator->fails())
         {
@@ -114,7 +114,7 @@ class AnnuaireController extends Controller
 
         $user_id = $request->user()->id;
 
-        $validator = Validator::make($input, ['telephone' => 'required']);
+        $validator = Validator::make($input, ['telephone' => 'required|unique:annuaires']);
 
         if ($validator->fails())
         {
