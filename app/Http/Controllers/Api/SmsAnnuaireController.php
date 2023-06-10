@@ -106,13 +106,12 @@ class SmsAnnuaireController extends Controller
                     'body' => $request->message
                 ]);
      
-                return back()
-                ->with('success','Sms has been successfully sent.');
+                return response()->json(["success" => true, "message" => "Liste des Annuaires", "data" =>$Annuaires]);
      
             } catch (\Exception $e) {
                 dd($e->getMessage());
-                return back()
-                ->with('error', $e->getMessage());
+                /* return back()
+                ->with('error', $e->getMessage()); */
             }
 
             return response()->json(["success" => true, "message" => "Liste des Annuaires", "data" =>$Annuaires]);
