@@ -36,6 +36,7 @@ class SmsAnnuaireController extends Controller
         $region = $input['region'];
         $departement = $input['departement'];
         $commune = $input['commune'];
+        $message = $input['message'];
 
         $validator = Validator::make($input, []);
         if ($validator->fails())
