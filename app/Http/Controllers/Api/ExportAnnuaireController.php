@@ -34,8 +34,6 @@ class ExportAnnuaireController extends Controller
         $nom = $input['nom'];     
         $telephone = $input['telephone'];
         $type_militant = $input['type_militant'];
-        $nom_responsable = $input['nom_responsable'];
-        $telephone_responsable = $input['telephone_responsable'];
         $region = $input['region'];
         $departement = $input['departement'];
         $commune = $input['commune'];
