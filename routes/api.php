@@ -197,6 +197,16 @@ Route::middleware('auth:api')->group(function () {
     Route::post('parrainageByNumElecteur', [RechercheParrainageController::class, 'parrainageByNumElecteur']);
     Route::post('parrainageByNumCin', [RechercheParrainageController::class, 'parrainageByNumCin']);
 
+    /**Recherche avancée annuaire */
+    Route::resource('annuaires', AnnuaireController::class);
+    Route::post('recherche_avance_annuaires', [RechercheAnnuaireController::class, 'recherche']);
+    Route::post('export_csv_annuaires', [ExportAnnuaireController::class, 'exportCSV']);
+    Route::post('export_pdf_annuaires', [ExportAnnuaireController::class, 'exportPDF']);
+    Route::post('sendSms', [SmsAnnuaireController::class, 'sendSms']);
+    Route::post('annuaireByNumCedeao', [RechercheAnnuaireController::class, 'annuaireByNumCedeao']);
+    Route::post('annuaireByNumElecteur', [RechercheAnnuaireController::class, 'annuaireByNumElecteur']);
+    Route::post('annuaireByNumCin', [RechercheAnnuaireController::class, 'annuaireByNumCin']);
+
     /**Gestion des lignes de financement */
     Route::resource('ligne_financements', LigneFinancementController::class);
 
