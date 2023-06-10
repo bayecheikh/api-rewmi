@@ -52,6 +52,7 @@ use App\Http\Controllers\Api\AnnuaireController;
 use App\Http\Controllers\Api\RechercheAnnuaireController;
 use App\Http\Controllers\Api\ExportAnnuaireController;
 use App\Http\Controllers\Api\SmsAnnuaireController;
+use App\Http\Controllers\Api\TypeMilitantController;
 
 
 /*
