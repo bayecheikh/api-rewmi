@@ -28,7 +28,7 @@ class AnnuaireController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->user()->hasRole('super_admin')) {
+        if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin') || $request->user()->hasRole('admin-annuaire')) {
             $Annuaires = Annuaire::all();
         }
         else{           

@@ -46,7 +46,7 @@ class SmsAnnuaireController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+            if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin') || $request->user()->hasRole('admin-annuaire')) {
                 $Annuaires = Annuaire::where('status','actif');
             }
             else{           
