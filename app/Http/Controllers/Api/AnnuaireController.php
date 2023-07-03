@@ -73,7 +73,7 @@ class AnnuaireController extends Controller
                 'user_id'=>$user_id]
             );
 
-            return response()->json(["success" => true, "message" => "Annuaire enregistré avec succès."]);
+            return response()->json(["success" => true, "message" => "Contact enregistré avec succès."]);
         }
 
            
@@ -134,7 +134,7 @@ class AnnuaireController extends Controller
             
 
             return response()
-                ->json(["success" => true, "message" => "Annuaire updated successfully.", "data" => $Annuaire]);
+                ->json(["success" => true, "message" => "Contact modifié avec succès.", "data" => $Annuaire]);
         }
     }
     /**
@@ -147,6 +147,6 @@ class AnnuaireController extends Controller
     {
         $Annuaire->delete();
         return response()
-            ->json(["success" => true, "message" => "Annuaire supprimé.", "data" => $Annuaire]);
+            ->json(["success" => true, "message" => "Contact supprimé.", "data" => $Annuaire]);
     }
 }
