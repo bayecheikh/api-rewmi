@@ -96,7 +96,7 @@ class SmsAnnuaireController extends Controller
      
             try {
                 $accountSid = 'AC164f5f1383ed60d986cf28340d90551f';
-                $authToken = '7e6cfb05863148ea972834f08537b06f';
+                $authToken = '15cb78a8dc392da7bc7b7c8a4f6acba9';
                 $twilioNumber = $request->expediteur;
      
                 $client = new Client($accountSid, $authToken);
