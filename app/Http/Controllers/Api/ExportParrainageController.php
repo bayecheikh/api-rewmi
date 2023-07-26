@@ -48,6 +48,7 @@ class ExportParrainageController extends Controller
         $region = $input['region'];
         $departement = $input['departement'];
         $commune = $input['commune'];
+        $created_at = $input['created_at'];
 
         $validator = Validator::make($input, []);
         if ($validator->fails())
@@ -136,6 +137,10 @@ class ExportParrainageController extends Controller
             if($commune!=''){               
                 $Parrainages = $Parrainages
                 ->where('commune','LIKE', '%'.$commune.'%');                  
+            }
+            if($created_at!=''){               
+                $Parrainages = $Parrainages
+                ->where('created_at','LIKE', '%'.$created_at.'%');                  
             }
 
             $Parrainages = $Parrainages->get();
