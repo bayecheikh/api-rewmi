@@ -51,7 +51,7 @@ class ParrainageController extends Controller
 
         $user_id = $request->user()->id;
 
-        $validator = Validator::make($input, ['numero_cedeao' => 'required']);
+        $validator = Validator::make($input, ['numero_cedeao' => 'required','numero_cin' => 'required','numero_electeur' => 'required','region' => 'required','departement' => 'required','commune' => 'required','prenom' => 'required','nom' => 'required','date_naissance' => 'required','lieu_naissance' => 'required','sexe' => 'required','taille' => 'required']);
 
         if ($validator->fails())
         {
