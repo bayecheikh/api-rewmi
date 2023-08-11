@@ -64,6 +64,10 @@ class RechercheParrainageController extends Controller
                 $user_id = $request->user()->id;
                 $Parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
             }
+            if(isset($input['user_id'])){
+                $Parrainages = $Parrainages
+                ->where('user_id','like', '%'.$input['user_id'].'%');   
+            }
             if($numero_cedeao!=''){               
                 $Parrainages = $Parrainages
                 ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
