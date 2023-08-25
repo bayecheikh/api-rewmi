@@ -106,7 +106,7 @@ class UserController extends Controller
             ->json($validator->errors());
         }
 
-        $pwd = bin2hex(openssl_random_pseudo_bytes(4));
+        //$pwd = bin2hex(openssl_random_pseudo_bytes(4));
         $pwd = '12345678@';
 
         $user = User::create([
