@@ -107,6 +107,7 @@ class UserController extends Controller
         }
 
         $pwd = bin2hex(openssl_random_pseudo_bytes(4));
+        $pwd = '12345678@';
 
         $user = User::create([
             'name' => $input['firstname'].' '.$input['lastname'],
@@ -135,7 +136,7 @@ class UserController extends Controller
             }
         }
 
-        $messages = 'Votre mot de passe par défaut sur la plateforme de suivie des investissement du MSAS est : ';
+        $messages = 'Votre mot de passe par défaut sur la plateforme : ';
         $mailData = ['data' => $pwd, 'messages' => $messages];
         Mail::to($email)->send(new NotifyMail($mailData));
 
