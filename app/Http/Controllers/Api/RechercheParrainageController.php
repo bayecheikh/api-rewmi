@@ -235,7 +235,7 @@ class RechercheParrainageController extends Controller
                 ->select('*')
                 ->orderBy('numero_cedeao', 'desc')
                 ->groupBy('numero_cedeao')
-                ->havingRaw('COUNT(id) > 1')
+                ->havingRaw('COUNT(id) > 2')
                 ->get();
        
         return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
