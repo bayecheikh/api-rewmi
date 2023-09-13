@@ -237,13 +237,8 @@ class RechercheParrainageController extends Controller
                 ->groupBy('numero_cedeao')
                 ->havingRaw('COUNT(id) > 1')
                 ->get(); */
-                $Parrainages = DB::table('parrainages')
-                ->select('*')
-                ->whereIn('id', function ($q){
-                            $q->select('id')
-                            ->from('parrainages')
-                            ->groupBy('numero_cedeao')
-                            ->havingRaw('COUNT(*) > 1');
+                $Parrainages = Parrainage::whereIn('id', function ( $query ) {
+                    $query->select('id')->from('parrainages')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
                 })->get();
        
         return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
