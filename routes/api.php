@@ -204,6 +204,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('doublonCedeao', [RechercheParrainageController::class, 'doublonCedeao']);
     Route::post('doublonCin', [RechercheParrainageController::class, 'doublonCin']);
     Route::post('doublonNumElecteur', [RechercheParrainageController::class, 'doublonNumElecteur']);
+    Route::post('sansDoublon', [RechercheParrainageController::class, 'sansDoublon']);
 
     /**Recherche avancée annuaire */
     Route::resource('annuaires', AnnuaireController::class);
