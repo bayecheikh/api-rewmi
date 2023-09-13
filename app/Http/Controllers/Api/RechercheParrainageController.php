@@ -231,10 +231,14 @@ class RechercheParrainageController extends Controller
     public function doublonCedeao(Request $request)
     {
         
-            $Parrainages = DB::table('parrainages')
-                ->groupBy('numero_cedeao')
-                ->havingRaw('COUNT(numero_cedeao) > 1')
-                ->get();
+        $Parrainages = DB::table('parrainages')
+        ->select('*')
+        ->whereIn('id', function ($q){
+                    $q->select('id')
+                    ->from('parrainages')
+                    ->groupBy('numero_cedeao')
+                    ->havingRaw('COUNT(*) > 1');
+        })->get();
        
         return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
     }
