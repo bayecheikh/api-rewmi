@@ -59,7 +59,7 @@ class RechercheParrainageController extends Controller
         }
         else{ 
             if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-                $Parrainages = Parrainage::where('status','actif');
+                $Parrainages = Parrainage::where('status','like', '%actif%');
             }
             else{           
                 $user_id = $request->user()->id;
@@ -241,7 +241,15 @@ class RechercheParrainageController extends Controller
                     $query->select('id')->from('parrainages')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
                 })->get(); */
 
-        $parrainages = Parrainage::all();
+        if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+            $parrainages = Parrainage::where('status','like', '%actif%');
+        }
+        else{           
+            $user_id = $request->user()->id;
+            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+        }
+
+        
         $parrainagesUnique = $parrainages->unique(['numero_cedeao']);
         $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
@@ -251,7 +259,14 @@ class RechercheParrainageController extends Controller
     public function doublonCin(Request $request)
     {
         
-        $parrainages = Parrainage::all();
+        if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+            $parrainages = Parrainage::where('status','like', '%actif%');
+        }
+        else{           
+            $user_id = $request->user()->id;
+            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+        }
+
         $parrainagesUnique = $parrainages->unique(['numero_cin']);
         $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
@@ -261,7 +276,14 @@ class RechercheParrainageController extends Controller
     public function doublonNumElecteur(Request $request)
     {
         
-        $parrainages = Parrainage::all();
+        if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+            $parrainages = Parrainage::where('status','like', '%actif%');
+        }
+        else{           
+            $user_id = $request->user()->id;
+            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+        }
+        
         $parrainagesUnique = $parrainages->unique(['numero_electeur']);
         $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
