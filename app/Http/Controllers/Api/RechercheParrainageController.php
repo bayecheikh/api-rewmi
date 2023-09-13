@@ -233,7 +233,7 @@ class RechercheParrainageController extends Controller
         
             $Parrainages = DB::table('parrainages')
                 ->select('*')
-                ->groupBy('numero_cedeao')
+                ->groupBy('id')
                 ->havingRaw('COUNT(numero_cedeao) > 1')
                 ->get();
        
