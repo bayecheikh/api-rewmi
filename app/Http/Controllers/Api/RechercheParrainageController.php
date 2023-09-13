@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use Validator;
 
@@ -225,4 +226,40 @@ class RechercheParrainageController extends Controller
             return response()->json(["success" => true, "message" => "Liste des Parrainages", "data" =>$Parrainages]);
         }
     }
+
+    
+    public function doublonCedeao(Request $request)
+    {
+        
+            $Parrainages = DB::table('parrainages')
+                ->groupBy('numero_cedeao')
+                ->havingRaw('COUNT(id) > 1')
+                ->get();
+       
+        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
+    }
+
+    public function doublonCin(Request $request)
+    {
+        
+            $Parrainages = DB::table('parrainages')
+                ->groupBy('numero_cin')
+                ->havingRaw('COUNT(id) > 1')
+                ->get();
+       
+        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
+    }
+
+    public function doublonNumElecteur(Request $request)
+    {
+        
+            $Parrainages = DB::table('parrainages')
+                ->groupBy('numero_electeur')
+                ->havingRaw('COUNT(id) > 1')
+                ->get();
+       
+        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
+    }
+
+
 }

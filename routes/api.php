@@ -201,6 +201,9 @@ Route::middleware('auth:api')->group(function () {
     Route::post('parrainageByNumCedeao', [RechercheParrainageController::class, 'parrainageByNumCedeao']);
     Route::post('parrainageByNumElecteur', [RechercheParrainageController::class, 'parrainageByNumElecteur']);
     Route::post('parrainageByNumCin', [RechercheParrainageController::class, 'parrainageByNumCin']);
+    Route::post('doublonCedeao', [RechercheParrainageController::class, 'doublonCedeao']);
+    Route::post('doublonCin', [RechercheParrainageController::class, 'doublonCin']);
+    Route::post('doublonNumElecteur', [RechercheParrainageController::class, 'doublonNumElecteur']);
 
     /**Recherche avancée annuaire */
     Route::resource('annuaires', AnnuaireController::class);
