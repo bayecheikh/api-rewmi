@@ -237,11 +237,15 @@ class RechercheParrainageController extends Controller
                 ->groupBy('numero_cedeao')
                 ->havingRaw('COUNT(id) > 1')
                 ->get(); */
-                $Parrainages = Parrainage::whereIn('id', function ( $query ) {
+                /* $Parrainages = Parrainage::whereIn('id', function ( $query ) {
                     $query->select('id')->from('parrainages')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
-                })->get();
+                })->get(); */
+
+                $parrainages = Parrainage::all();
+                $parrainagesUnique = $parrainages->unique(['numero_cedeao']);
+                $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
-        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
+        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$parrainageDuplicates]);
     }
 
     public function doublonCin(Request $request)
