@@ -242,11 +242,11 @@ class RechercheParrainageController extends Controller
                 })->get(); */
 
         if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-            $parrainages = Parrainage::where('status','like', '%actif%');
+            $parrainages = Parrainage::where('status','like', '%actif%')->get();
         }
         else{           
             $user_id = $request->user()->id;
-            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%')->get();                      
         }
 
         
@@ -260,11 +260,11 @@ class RechercheParrainageController extends Controller
     {
         
         if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-            $parrainages = Parrainage::where('status','like', '%actif%');
+            $parrainages = Parrainage::where('status','like', '%actif%')->get();
         }
         else{           
             $user_id = $request->user()->id;
-            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%')->get();                      
         }
 
         $parrainagesUnique = $parrainages->unique(['numero_cin']);
@@ -277,13 +277,13 @@ class RechercheParrainageController extends Controller
     {
         
         if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-            $parrainages = Parrainage::where('status','like', '%actif%');
+            $parrainages = Parrainage::where('status','like', '%actif%')->get();
         }
         else{           
             $user_id = $request->user()->id;
-            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%');                      
+            $parrainages = Parrainage::where('user_id', $user_id)->where('status','like', '%actif%')->get();                      
         }
-        
+
         $parrainagesUnique = $parrainages->unique(['numero_electeur']);
         $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
