@@ -241,9 +241,9 @@ class RechercheParrainageController extends Controller
                     $query->select('id')->from('parrainages')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
                 })->get(); */
 
-                $parrainages = Parrainage::all();
-                $parrainagesUnique = $parrainages->unique(['numero_cedeao']);
-                $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
+        $parrainages = Parrainage::all();
+        $parrainagesUnique = $parrainages->unique(['numero_cedeao']);
+        $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
         return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$parrainageDuplicates]);
     }
@@ -251,23 +251,21 @@ class RechercheParrainageController extends Controller
     public function doublonCin(Request $request)
     {
         
-            $Parrainages = DB::table('parrainages')
-                ->groupBy('numero_cin')
-                ->havingRaw('COUNT(id) > 1')
-                ->get();
+        $parrainages = Parrainage::all();
+        $parrainagesUnique = $parrainages->unique(['numero_cin']);
+        $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
-        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
+        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$parrainageDuplicates]);
     }
 
     public function doublonNumElecteur(Request $request)
     {
         
-            $Parrainages = DB::table('parrainages')
-                ->groupBy('numero_electeur')
-                ->havingRaw('COUNT(id) > 1')
-                ->get();
+        $parrainages = Parrainage::all();
+        $parrainagesUnique = $parrainages->unique(['numero_electeur']);
+        $parrainageDuplicates = $parrainages->diff($parrainagesUnique);
        
-        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$Parrainages]);
+        return response()->json(["success" => true, "message" => "Parrainage List en doublon", "data" =>$parrainageDuplicates]);
     }
 
 
