@@ -32,7 +32,6 @@ return new class extends Migration
             $table->string('prenom_responsable')->nullable();
             $table->string('nom_responsable')->nullable();
             $table->string('telephone_responsable')->nullable();
-            $table->string('telephone_responsable')->nullable();
             $table->string('region')->nullable();
             $table->string('departement')->nullable();
             $table->string('commune')->nullable();
