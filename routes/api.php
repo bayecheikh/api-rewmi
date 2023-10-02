@@ -47,6 +47,8 @@ use App\Http\Controllers\Api\SecteurController;
 use App\Http\Controllers\Api\SousSecteurController;
 use App\Http\Controllers\Api\ParrainageController;
 use App\Http\Controllers\Api\RechercheParrainageController;
+use App\Http\Controllers\Api\ElecteurController;
+use App\Http\Controllers\Api\RechercheElecteurController;
 use App\Http\Controllers\Api\ExportParrainageController;
 use App\Http\Controllers\Api\AnnuaireController;
 use App\Http\Controllers\Api\RechercheAnnuaireController;
@@ -205,6 +207,19 @@ Route::middleware('auth:api')->group(function () {
     Route::post('doublonCin', [RechercheParrainageController::class, 'doublonCin']);
     Route::post('doublonNumElecteur', [RechercheParrainageController::class, 'doublonNumElecteur']);
     Route::post('sansDoublon', [RechercheParrainageController::class, 'sansDoublon']);
+
+    /**Recherche avancée parrainage */
+    Route::resource('electeurs', ElecteurController::class);
+    Route::post('recherche_avance_electeurs', [RechercheElecteurController::class, 'recherche']);
+    Route::post('export_csv_electeurs', [ExportElecteurController::class, 'exportCSV']);
+    Route::post('export_pdf_electeurs', [ExportElecteurController::class, 'exportPDF']);
+    Route::post('electeurByNumCedeao', [RechercheElecteurController::class, 'electeurByNumCedeao']);
+    Route::post('electeurByNumElecteur', [RechercheElecteurController::class, 'electeurByNumElecteur']);
+    Route::post('electeurByNumCin', [RechercheElecteurController::class, 'electeurByNumCin']);
+    Route::post('doublonElecteurCedeao', [RechercheElecteurController::class, 'doublonCedeao']);
+    Route::post('doublonElecteurCin', [RechercheElecteurController::class, 'doublonCin']);
+    Route::post('doublonElecteurNumElecteur', [RechercheElecteurController::class, 'doublonNumElecteur']);
+    Route::post('sansElecteurDoublon', [RechercheElecteurController::class, 'sansDoublon']);
 
     /**Recherche avancée annuaire */
     Route::resource('annuaires', AnnuaireController::class);
