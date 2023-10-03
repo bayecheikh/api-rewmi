@@ -122,10 +122,10 @@ class UserController extends Controller
         $email = $input['email'];
        
 
-        if(isset($input['secteur_id'])){
+        /* if(isset($input['secteur_id'])){
             $secteurObj = SousSecteur::where('id',$input['secteur_id'])->first();
             $user->secteur()->attach($secteurObj);
-        }
+        } */
 
         $array_roles = $request->roles;
 
@@ -136,9 +136,9 @@ class UserController extends Controller
             }
         }
 
-        $messages = 'Votre mot de passe par défaut sur la plateforme : ';
+        /* $messages = 'Votre mot de passe par défaut sur la plateforme : ';
         $mailData = ['data' => $pwd, 'messages' => $messages];
-        Mail::to($email)->send(new NotifyMail($mailData));
+        Mail::to($email)->send(new NotifyMail($mailData)); */
 
         return response()->json(["success" => true, "message" => "Utilisateur créé avec succès.", "data" => $user]);
     }
