@@ -310,8 +310,7 @@ class RechercheElecteurController extends Controller
     public function electeurByRegion(Request $request)
     {         
         if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
-            $ElecteursUnique = DB::table("parrainages")
-            ->select("region", "count (*)")
+            $ElecteursUnique = Electeur::select("region", DB::raw('COUNT(*) as count'))
             ->whereNotNull("region")
             ->groupBy("region")
             ->get();
