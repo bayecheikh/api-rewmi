@@ -307,5 +307,30 @@ class RechercheElecteurController extends Controller
         return response()->json(["success" => true, "message" => "Electeur List sans doublon", "data" =>$ElecteursUnique]);
     }
 
+    public function electeurByRegion(Request $request)
+    {         
+        if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+            $ElecteursUnique = DB::table("parrainages")
+            ->select("region", "count (*)")
+            ->whereNotNull("region")
+            ->groupBy("region")
+            ->get();
+        }
+        else{           
+            $user_id = $request->user()->id;            
+            $ElecteursUnique = DB::table("parrainages")
+            ->select("region", "count (*)")
+            ->where('user_id', $user_id)
+            ->whereNotNull("region")
+            ->groupBy("region")
+            ->get();
+        }                    
+
+        
+        
+       
+        return response()->json(["success" => true, "message" => "Electeur List sans doublon", "data" =>$ElecteursUnique]);
+    }
+
 
 }

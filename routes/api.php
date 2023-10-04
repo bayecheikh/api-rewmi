@@ -207,6 +207,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('doublonCin', [RechercheParrainageController::class, 'doublonCin']);
     Route::post('doublonNumElecteur', [RechercheParrainageController::class, 'doublonNumElecteur']);
     Route::post('sansDoublon', [RechercheParrainageController::class, 'sansDoublon']);
+    Route::post('parrainageByRegion', [RechercheParrainageController::class, 'parrainageByRegion']);
 
     /**Recherche avancée parrainage */
     Route::resource('electeurs', ElecteurController::class);
@@ -220,6 +221,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('doublonElecteurCin', [RechercheElecteurController::class, 'doublonCin']);
     Route::post('doublonElecteurNumElecteur', [RechercheElecteurController::class, 'doublonNumElecteur']);
     Route::post('sansElecteurDoublon', [RechercheElecteurController::class, 'sansDoublon']);
+    Route::post('electeurByRegion', [RechercheElecteurController::class, 'electeurByRegion']);
 
     /**Recherche avancée annuaire */
     Route::resource('annuaires', AnnuaireController::class);

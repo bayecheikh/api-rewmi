@@ -307,5 +307,28 @@ class RechercheParrainageController extends Controller
         return response()->json(["success" => true, "message" => "Parrainage List sans doublon", "data" =>$parrainagesUnique]);
     }
 
+    public function parrainageByRegion(Request $request)
+    {         
+        if ($request->user()->hasRole('super_admin') || $request->user()->hasRole('admin')) {
+            $ParrainagesUnique = DB::table("parrainages")
+            ->select("region", "count (*)")
+            ->whereNotNull("region")
+            ->groupBy("region")
+            ->get();
+        }
+        else{           
+            $user_id = $request->user()->id;            
+            $ParrainagesUnique = DB::table("parrainages")
+            ->select("region", "count (*)")
+            ->where('user_id', $user_id)
+            ->whereNotNull("region")
+            ->groupBy("region")
+            ->get();
+        }                    
+
+        return response()->json(["success" => true, "message" => "Parrainage List sans doublon", "data" =>$ParrainagesUnique]);
+    }
+
+
 
 }
