@@ -55,6 +55,7 @@ use App\Http\Controllers\Api\RechercheAnnuaireController;
 use App\Http\Controllers\Api\ExportAnnuaireController;
 use App\Http\Controllers\Api\SmsAnnuaireController;
 use App\Http\Controllers\Api\TypeMilitantController;
+use App\Http\Controllers\Api\VotantController;
 
 
 /*
@@ -222,7 +223,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('doublonElecteurNumElecteur', [RechercheElecteurController::class, 'doublonNumElecteur']);
     Route::post('sansElecteurDoublon', [RechercheElecteurController::class, 'sansDoublon']);
     Route::get('electeurByRegion', [RechercheElecteurController::class, 'electeurByRegion']);
-
+    //Votant
+    Route::post('votantByNumElecteur', [VotantController::class, 'electeurByNumElecteur']);
     /**Recherche avancée annuaire */
     Route::resource('annuaires', AnnuaireController::class);
     Route::post('recherche_avance_annuaires', [RechercheAnnuaireController::class, 'recherche']);
