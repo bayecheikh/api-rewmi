@@ -15,8 +15,7 @@ class Votant extends Model
    */
     protected $fillable = [
         'numero_electeur',
-        'prenom',
-        'nom',
+        'prenom_nom',
         'region',
         'departement',
         'commune'
