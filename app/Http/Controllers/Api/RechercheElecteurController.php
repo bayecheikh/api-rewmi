@@ -190,11 +190,9 @@ class RechercheElecteurController extends Controller
             ->json($validator->errors());
         }
         else{ 
-            $Electeurs = Electeur::where('status', 'like', '%actif%');
            
             if($numero_electeur!=''){               
-                $Electeurs = $Electeurs
-                ->where('numero_electeur','like', '%'.$numero_electeur.'%');                  
+                $Electeurs = Electeur::where('numero_electeur','like', '%'.$numero_electeur.'%');                  
             }
 
             $Electeurs = $Electeurs->get();
