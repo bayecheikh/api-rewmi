@@ -51,7 +51,7 @@ class ElecteurController extends Controller
 
         $user_id = $request->user()->id;
 
-        $validator = Validator::make($input, ['numero_cin' => 'required|unique:electeurs,numero_cin','numero_electeur' => 'required|unique:electeurs,numero_electeur','region' => 'required','departement' => 'required','commune' => 'required','prenom' => 'required','nom' => 'required','date_expiration' => 'required','numero_electeur_responsable' => 'required']);
+        $validator = Validator::make($input, ['numero_cin' => 'required|unique:electeurs,numero_cin','numero_electeur' => 'required|unique:electeurs,numero_electeur','region' => 'required','departement' => 'required','commune' => 'required','prenom' => 'required','nom' => 'required','date_expiration' => 'required','numero_electeur_responsable' => 'required','prenom_responsable' => 'required','nom_responsable' => 'required']);
 
         if ($validator->fails())
         {
@@ -126,7 +126,7 @@ class ElecteurController extends Controller
 
         $user_id = $request->user()->id;
 
-        $validator = Validator::make($input, ['numero_cin' => 'required|unique:electeurs,numero_cin','numero_electeur' => 'required|unique:electeurs,numero_electeur','region' => 'required','departement' => 'required','commune' => 'required','prenom' => 'required','nom' => 'required','date_expiration' => 'required','numero_electeur_responsable' => 'required']);
+        $validator = Validator::make($input, ['numero_cin' => 'required|unique:electeurs,numero_cin','numero_electeur' => 'required|unique:electeurs,numero_electeur','region' => 'required','departement' => 'required','commune' => 'required','prenom' => 'required','nom' => 'required','date_expiration' => 'required','numero_electeur_responsable' => 'required','prenom_responsable' => 'required','nom_responsable' => 'required']);
 
         if ($validator->fails())
         {
