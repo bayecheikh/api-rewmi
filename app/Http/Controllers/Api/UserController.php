@@ -58,11 +58,11 @@ class UserController extends Controller
             })->paginate(10);
         } */
 
-        $users = User::with('roles')->with('secteur')->paginate(0);
+        $users = User::with('roles')->get();
         
-        $total = $users->total();
+        //$total = $users->total();
 
-        return response()->json(["success" => true, "message" => "Liste des utilisateurs", "data" =>$users,"total"=> $total]);   
+        return response()->json(["success" => true, "message" => "Liste des utilisateurs", "data" =>$users]);   
     }
 
     /**
