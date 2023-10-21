@@ -46,6 +46,24 @@ class UserController extends Controller
 
         return response()->json(["success" => true, "message" => "Liste des utilisateurs", "data" =>$users,"total"=> $total]);   
     }
+    public function allUser(Request $request)
+    {
+        /* if ($request->user()->hasRole('super_admin')) {
+            $users = User::with('roles')->with('structures')->paginate(10);
+        }
+        else{
+            $structure_id = User::find($request->user()->id)->structures[0]->id;
+            $users = User::with('roles')->with('structures')->whereHas('structures', function($q) use ($structure_id){
+                $q->where('id', $structure_id);
+            })->paginate(10);
+        } */
+
+        $users = User::with('roles')->with('secteur')->paginate(0);
+        
+        $total = $users->total();
+
+        return response()->json(["success" => true, "message" => "Liste des utilisateurs", "data" =>$users,"total"=> $total]);   
+    }
 
     /**
      * Display a listing of the resource.
