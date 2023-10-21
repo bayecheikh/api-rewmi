@@ -45,7 +45,7 @@ class RechercheElecteurController extends Controller
         $telephone = $input['telephone'];
         $prenom_responsable = $input['prenom_responsable'];
         $nom_responsable = $input['nom_responsable'];
-        $numero_electeur_responsable = $input['numero_electeur_responsable'];
+       // $numero_electeur_responsable = $input['numero_electeur_responsable'];
         $telephone_responsable = $input['telephone_responsable'];
         $created_at = $input['created_at'];
         $region = $input['region'];
@@ -118,9 +118,9 @@ class RechercheElecteurController extends Controller
                 $Electeurs = $Electeurs
                 ->where('telephone','like', '%'.$telephone.'%');                  
             }
-            if($numero_electeur_responsable!=''){               
+            if(isset($input['numero_electeur_responsable'])){               
                 $Electeurs = $Electeurs
-                ->where('numero_electeur_responsable','like', '%'.$numero_electeur_responsable.'%');                  
+                ->where('numero_electeur_responsable','like', '%'.$input['numero_electeur_responsable'].'%');                  
             }
             if($prenom_responsable!=''){               
                 $Electeurs = $Electeurs
