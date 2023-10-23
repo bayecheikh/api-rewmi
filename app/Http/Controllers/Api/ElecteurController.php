@@ -126,7 +126,7 @@ class ElecteurController extends Controller
 
         $user_id = $request->user()->id;
 
-        $validator = Validator::make($input, ['numero_cin' => 'required']);
+        $validator = Validator::make($input, ['numero_cin' => 'required','numero_electeur' => 'required','region' => 'required','departement' => 'required','commune' => 'required','prenom' => 'required','nom' => 'required','date_expiration' => 'required','numero_electeur_responsable' => 'required','prenom_responsable' => 'required','nom_responsable' => 'required']);
 
         if ($validator->fails())
         {
