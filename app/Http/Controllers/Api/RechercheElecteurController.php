@@ -230,7 +230,19 @@ class RechercheElecteurController extends Controller
         }
     }
 
-    
+    public function allCollecteur(Request $request)
+    {
+  
+        $Collecteurs = DB::table('Electeurs')
+                ->select('*', DB::raw('count(*) as total'))
+                ->orderBy('region', 'desc')
+                ->groupBy('numero_electeur_responsable')
+                ->get(); 
+                return response()->json(["success" => true, "message" => "Electeur List en doublon", "data" =>$Collecteurs]); 
+                /* $Electeurs = Electeur::whereIn('id', function ( $query ) {
+                    $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
+                })->get(); */
+    }
     public function doublonCedeao(Request $request)
     {
         
