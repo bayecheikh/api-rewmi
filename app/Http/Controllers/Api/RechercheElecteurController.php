@@ -233,7 +233,7 @@ class RechercheElecteurController extends Controller
     public function allCollecteur(Request $request)
     {
   
-        $Collecteurs = DB::table('Electeurs')
+        $Collecteurs = DB::table('electeurs')
                 ->select('*', DB::raw('count(*) as total'))
                 ->orderBy('region', 'desc')
                 ->groupBy('numero_electeur_responsable')
