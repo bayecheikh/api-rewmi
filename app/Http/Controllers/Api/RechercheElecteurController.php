@@ -243,6 +243,19 @@ class RechercheElecteurController extends Controller
                     $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
                 })->get(); */
     }
+    public function allParraincommune(Request $request)
+    {
+  
+        $ParrainCommunes = DB::table('electeurs')
+                ->select('commune', DB::raw('count(*) as total'))
+                ->orderBy('commune', 'asc')
+                ->groupBy('commune')
+                ->get(); 
+                return response()->json(["success" => true, "message" => "Parrain par commune", "data" =>$ParrainCommunes]); 
+                /* $Electeurs = Electeur::whereIn('id', function ( $query ) {
+                    $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
+                })->get(); */
+    }
     public function doublonCedeao(Request $request)
     {
         
