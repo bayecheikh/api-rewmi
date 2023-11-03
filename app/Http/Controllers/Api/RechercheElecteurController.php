@@ -247,8 +247,8 @@ class RechercheElecteurController extends Controller
     {
   
         $ParrainCommunes = DB::table('electeurs')
-                ->select('commune', DB::raw('count(*) as total'))
-                ->orderBy('commune', 'asc')
+                ->select('commune','departement','region', DB::raw('count(*) as total'))
+                ->orderBy('region', 'asc')
                 ->groupBy('commune')
                 ->get(); 
                 return response()->json(["success" => true, "message" => "Parrain par commune", "data" =>$ParrainCommunes]); 
