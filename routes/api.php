@@ -225,6 +225,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('sansElecteurDoublon', [RechercheElecteurController::class, 'sansDoublon']);
     Route::get('electeurByRegion', [RechercheElecteurController::class, 'electeurByRegion']);
     Route::get('allCollecteur', [RechercheElecteurController::class, 'allCollecteur']);
+    Route::get('allParraincommune', [RechercheElecteurController::class, 'allParraincommune']);
     //Votant
     Route::post('votantByNumElecteur', [VotantController::class, 'electeurByNumElecteur']);
     /**Recherche avancée annuaire */
