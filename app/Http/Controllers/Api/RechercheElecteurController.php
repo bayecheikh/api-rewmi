@@ -256,6 +256,32 @@ class RechercheElecteurController extends Controller
                     $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
                 })->get(); */
     }
+    public function allParraindepartement(Request $request)
+    {
+  
+        $ParrainDepartements = DB::table('electeurs')
+                ->select('departement','region', DB::raw('count(*) as total'))
+                ->orderBy('region', 'asc')
+                ->groupBy('departement')
+                ->get(); 
+                return response()->json(["success" => true, "message" => "Parrain par departement", "data" =>$ParrainDepartements]); 
+                /* $Electeurs = Electeur::whereIn('id', function ( $query ) {
+                    $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
+                })->get(); */
+    }
+    public function allParrainregion(Request $request)
+    {
+  
+        $ParrainRegions = DB::table('electeurs')
+                ->select('region', DB::raw('count(*) as total'))
+                ->orderBy('region', 'asc')
+                ->groupBy('region')
+                ->get(); 
+                return response()->json(["success" => true, "message" => "Parrain par region", "data" =>$ParrainRegions]); 
+                /* $Electeurs = Electeur::whereIn('id', function ( $query ) {
+                    $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
+                })->get(); */
+    }
     public function doublonCedeao(Request $request)
     {
         

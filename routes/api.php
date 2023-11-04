@@ -226,6 +226,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('electeurByRegion', [RechercheElecteurController::class, 'electeurByRegion']);
     Route::get('allCollecteur', [RechercheElecteurController::class, 'allCollecteur']);
     Route::get('allParraincommune', [RechercheElecteurController::class, 'allParraincommune']);
+    Route::get('allParraindepartement', [RechercheElecteurController::class, 'allParraindepartement']);
+    Route::get('allParrainregion', [RechercheElecteurController::class, 'allParrainregion']);
     //Votant
     Route::post('votantByNumElecteur', [VotantController::class, 'electeurByNumElecteur']);
     /**Recherche avancée annuaire */
