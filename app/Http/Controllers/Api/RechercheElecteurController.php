@@ -235,7 +235,7 @@ class RechercheElecteurController extends Controller
   
         $Collecteurs = DB::table('electeurs')
                 ->join('votants', 'electeurs.numero_electeur_responsable', '=', 'votants.numero_electeur')
-                ->select('electeurs.prenom_responsable as numero_electeur_responsable','electeurs.nom_responsable as nom_responsable','electeurs.numero_electeur_responsable as numero_electeur_responsable','votants.region as region','votants.departement as departement','votants.commune as commune', DB::raw('count(*) as total'))
+                ->select('electeurs.prenom_responsable','electeurs.nom_responsable','electeurs.numero_electeur_responsable','votants.region','votants.departement','votants.commune', DB::raw('count(*) as total'))
                 ->orderBy('votants.region', 'desc')
                 ->groupBy('electeurs.numero_electeur_responsable')
                 ->get(); 
