@@ -20,5 +20,10 @@ class Votant extends Model
         'departement',
         'commune'
     ];
+
+    public function electeurs()
+    {
+        return $this->hasMany(Electeur::class, 'numero_electeur_responsable', 'id');
+    }
     
 }
