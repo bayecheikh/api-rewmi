@@ -234,10 +234,9 @@ class RechercheElecteurController extends Controller
     {
   
         $Collecteurs = DB::table('electeurs')
-               ->join('votants', 'votants.numero_electeur', '=', 'electeurs.numero_electeur')
-                ->select('electeurs.prenom_responsable as prenom_responsable','electeurs.nom_responsable as nom_responsable','electeurs.numero_electeur_responsable as numero_electeur_responsable','votants.region','votants.departement','votants.commune', DB::raw('count(*) as total'))
-           
-                ->groupBy('electeurs.numero_electeur_responsable')
+                ->select('prenom_responsable','nom_responsable','numero_electeur_responsable','region','departement','commune', DB::raw('count(*) as total'))
+                ->orderBy('region', 'desc')
+                ->groupBy('numero_electeur_responsable')
                 ->get(); 
                 return response()->json(["success" => true, "message" => "Electeur List en doublon", "data" =>$Collecteurs]); 
                 /* $Electeurs = Electeur::whereIn('id', function ( $query ) {
