@@ -40,7 +40,7 @@ class Electeur extends Model
 
     public function collecteur()
     {
-        return $this->belongsTo(Votant::class, 'numero_electeur_responsable', 'id');
+        return $this->belongsTo(Votant::class, 'numero_electeur_responsable', 'numero_electeur');
     }
     
 }

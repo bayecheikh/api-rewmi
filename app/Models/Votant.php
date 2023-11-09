@@ -23,7 +23,7 @@ class Votant extends Model
 
     public function electeurs()
     {
-        return $this->hasMany(Electeur::class, 'numero_electeur_responsable', 'id');
+        return $this->hasMany(Electeur::class, 'numero_electeur_responsable', 'numero_electeur');
     }
     
 }
