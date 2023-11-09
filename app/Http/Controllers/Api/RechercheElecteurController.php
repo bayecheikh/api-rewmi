@@ -232,25 +232,17 @@ class RechercheElecteurController extends Controller
 
     public function allCollecteur(Request $request)
     {
-        $Collecteurs_tmp = array();
   
         $Collecteurs = DB::table('electeurs')
                 ->select('prenom_responsable','nom_responsable','numero_electeur_responsable','region','departement','commune', DB::raw('count(*) as total'))
                 ->orderBy('region', 'desc')
                 ->groupBy('numero_electeur_responsable')
                 ->get(); 
-
-                foreach ($Collecteurs as $col) {
-                    $data = DB::table('votants')->select('*')->where('numero_electeur', $col->numero_electeur_responsable)->get()->first();
-                    if($data){
-                        $Collecteurs_tmp[]= array('prenom_responsable'=>$col->prenom_responsable,'nom_responsable'=>$col->nom_responsable,'numero_electeur_responsable'=>$col->numero_electeur_responsable,'region'=>$data->region,'departement'=>$data->departement,'commune'=>$data->commune,'total'=>$col->total);
-                    }
-                }
-                return response()->json(["success" => true, "message" => "Electeur List en doublon", "data" =>$Collecteurs_tmp]); 
+                return response()->json(["success" => true, "message" => "Electeur List en doublon", "data" =>$Collecteurs]); 
                 /* $Electeurs = Electeur::whereIn('id', function ( $query ) {
                     $query->select('id')->from('Electeurs')->groupBy('numero_cedeao')->havingRaw('count(*) > 1');
                 })->get(); */
-    }   
+    }
     public function allParraincommune(Request $request)
     {
   
