@@ -410,6 +410,17 @@ class RechercheElecteurController extends Controller
         } */
 
         $Electeurs = Electeur::with('votant')->where('region','like', '%Diaspora%')->get();
+
+        foreach ($Electeurs as $Electe) {
+            if($Electe->votant) {
+
+                $Electe->prenom = $Electe->votant->prenom;
+                $Electe->nom = $Electe->votant->prenom;
+                $Electe->departement = $Electe->votant->departement;
+                $Electe->commune = $Electe->votant->commune;
+                $Electe->save();
+            }
+        }
     
         return response()->json(["success" => true, "message" => "Liste des Electeurs", "data" =>$Electeurs]);
     }
