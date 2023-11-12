@@ -42,5 +42,10 @@ class Electeur extends Model
     {
         return $this->belongsTo(Votant::class, 'numero_electeur_responsable', 'numero_electeur');
     }
+
+    public function votant()
+    {
+        return $this->belongsTo(Votant::class, 'numero_electeur', 'numero_electeur');
+    }
     
 }
