@@ -415,7 +415,7 @@ class RechercheElecteurController extends Controller
             if($Electe->votant) {
                 $string= explode(' ', $Electe->votant->prenom_nom);
                 $Electe->nom = array_pop($string);
-                $Electe->prenom = array_splice( $string, -1 );;
+                $Electe->prenom = substr($Electe->votant->prenom_nom, 0, strrpos($Electe->votant->prenom_nom, " "));
                 $Electe->departement = $Electe->votant->departement;
                 $Electe->commune = $Electe->votant->commune;
                 $Electe->save();
