@@ -413,9 +413,9 @@ class RechercheElecteurController extends Controller
 
         foreach ($Electeurs as $Electe) {
             if($Electe->votant) {
-
-                $Electe->prenom = $Electe->votant->prenom;
-                $Electe->nom = $Electe->votant->prenom;
+                $string= explode(' ', $Electe->votant->prenom_nom);
+                $Electe->nom = array_pop($string);
+                $Electe->prenom = array_splice( $string, -1 );;
                 $Electe->departement = $Electe->votant->departement;
                 $Electe->commune = $Electe->votant->commune;
                 $Electe->save();
