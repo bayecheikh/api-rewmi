@@ -35,7 +35,8 @@ class Electeur extends Model
         'departement',
         'commune',
         'user_id',
-        'status'
+        'status',
+        'lot'
     ];
 
     public function collecteur()

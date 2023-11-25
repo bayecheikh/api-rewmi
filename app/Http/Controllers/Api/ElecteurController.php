@@ -82,6 +82,7 @@ class ElecteurController extends Controller
                 'departement'=>$input['departement'],
                 'commune'=>$input['commune'],
                 'status'=>'actif',
+                'lot'=>'reserve',
                 'user_id'=>$user_id]
             );
 

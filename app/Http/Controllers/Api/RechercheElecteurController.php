@@ -70,6 +70,10 @@ class RechercheElecteurController extends Controller
                 $Electeurs = $Electeurs
                 ->where('user_id','like', '%'.$input['user_id'].'%');   
             }
+            if(isset($input['lot'])){
+                $Electeurs = $Electeurs
+                ->where('lot','like', '%'.$input['lot'].'%');   
+            }
             if($numero_cedeao!=''){               
                 $Electeurs = $Electeurs
                 ->where('numero_cedeao','like', '%'.$numero_cedeao.'%');                  
