@@ -159,6 +159,7 @@ class RechercheElecteurController extends Controller
             $Electeurs = $Electeurs->get();
             if(isset($input['nombre'])){               
                 $Electeurs = $Electeurs->skip(intval($input['nombre']));                  
+                $Electeurs = $Electeurs->take(intval($input['nombre'])-30);                  
             }
 
             
