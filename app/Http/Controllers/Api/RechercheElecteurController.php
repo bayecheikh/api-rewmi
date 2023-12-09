@@ -156,16 +156,14 @@ class RechercheElecteurController extends Controller
                 ->where('commune','like', '%'.$commune.'%');                  
             }
 
-            
+            $Electeurs = $Electeurs->get();
 
             if(isset($input['nombre'])){               
                 $Electeurs = $Electeurs->take(intval($input['nombre']));                  
             }
             if(isset($input['skipe'])){               
-                $Electeurs = $Electeurs->skip(intval($input['skipe'])); 
-                $Electeurs = $Electeurs->take(intval($input['nombre']));                 
+                $Electeurs = $Electeurs->take(30);                  
             }
-            $Electeurs = $Electeurs->get();
 
             return response()->json(["success" => true, "message" => "Liste des Electeurs", "data" =>$Electeurs,"REGION" =>$region]);
         }
