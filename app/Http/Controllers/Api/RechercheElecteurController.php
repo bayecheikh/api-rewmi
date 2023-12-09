@@ -156,7 +156,7 @@ class RechercheElecteurController extends Controller
                 ->where('commune','like', '%'.$commune.'%');                  
             }
             if(isset($input['nombre'])){               
-                $Electeurs = $Electeurs->take(intval($input['nombre']));                  
+                $Electeurs = $Electeurs->skip(intval($input['nombre']));                  
             }
             $Electeurs = $Electeurs->get();
 
