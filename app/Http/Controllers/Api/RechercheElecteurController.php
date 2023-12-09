@@ -161,6 +161,9 @@ class RechercheElecteurController extends Controller
             if(isset($input['nombre'])){               
                 $Electeurs = $Electeurs->take(intval($input['nombre']));                  
             }
+            if(isset($input['skip'])){               
+                $Electeurs = $Electeurs->skip(intval($input['nombre']));                  
+            }
 
             return response()->json(["success" => true, "message" => "Liste des Electeurs", "data" =>$Electeurs,"REGION" =>$region]);
         }
