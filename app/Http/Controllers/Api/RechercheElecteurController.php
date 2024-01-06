@@ -142,7 +142,7 @@ class RechercheElecteurController extends Controller
                 $Electeurs = $Electeurs
                 ->where('created_at','like', '%'.$created_at.'%');                  
             }
-            if($input['recent_date']){  
+            if(isset($input['recent_date'])){  
                 $recent_date = $input['recent_date'];           
                 $Electeurs = $Electeurs
                 ->where('created_at','>=', $recent_date);                  
